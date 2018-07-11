@@ -12,18 +12,35 @@ function update(){
             $li.classList.add('completed');
         }
         $todoList.appendChild($li);
+        
+        
+     /// try id but not wotking stop for today    
+        // var  $todoCount = document.querySelector('todo-list');
+        // function todocount($todoCount){
+        //     if (item.done === item.done) 
+        //         return $todoCount;
+            
+        // }
+        // function myFunction(){
+        //     document.getElementsByClassName('todo-count').footer =$todoCount.filter(todocount);
+        // }
+        
+
+ // Toggle button
+        const $toggle = document.createElement("input");
+        $toggle.className = "toggle";
+        $toggle.setAttribute("type", "checkbox");
+        if (item.done) {
+        $toggle.setAttribute("checked", "checked");
+}
+        $toggle.addEventListener("change", onToggleTodo.bind(null, item.id));
+        $li.appendChild($toggle);
+       
+
+        
 
 
-// toggle button
-    const  $toggle = document.createElement('input');
-    //$toggle.setAttribute('class','toggle');does the same as below line
-    $toggle.classname = "toggle"; 
-    $toggle.setAttribute('type', 'checkbox');
-    //if (item.done){
-      //  $toggle.setAttribute('checked', "checked");
-    //}
- //   $toggle.addEventListener('change', onToggleTodo.bin(null, item.id));
-  //  $li.appendChild($toggle);
+        
 
     // label
     const $label= document.createElement('label');
@@ -35,16 +52,33 @@ function update(){
     $button.className =" destroy";
     $li.appendChild($button);
 
+    ///to be done for the filter part
 
+    const $notDoneTodo = TODOS.filter(item => !item.done).length;
+    // Output on singular || prular !done TODOS 
+    const $todoCount = document.querySelector('.todo-count');
+    if ($notDoneTodo === 1) {
+        $todoCount.innerHTML = $notDoneTodo + ' item left';
+    } else if ($notDoneTodo === 0 || $notDoneTodo > 1) {
+        $todoCount.innerHTML = $notDoneTodo + ' items left';
     }
+}
+
+
+    
     document.querySelector(".main").style.display = "block";
 }
 
-function onToggleTodo(id){
+
+
+    function onToggleTodo(id){
     const todo=TODOS.find(todo=> todo.id===id);
-    todo = !todo.done;
+    //TODOS.find(function(todo){return todo.id===id});
+        todo.done = !todo.done;
     update();
+   
 }
+
 
 
 function onNewTodo(e){
@@ -59,12 +93,16 @@ function onNewTodo(e){
     TODOS.push({
         id: Date.now(),
         title,
-        done: true
+        done: false
     });
     update();
     e.target.value = '';
     
 }
+
+
+
+
 
 
 // select the new to do input field
