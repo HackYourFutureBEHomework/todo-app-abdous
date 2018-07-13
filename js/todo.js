@@ -14,18 +14,7 @@ function update(){
         $todoList.appendChild($li);
         
         
-     /// try id but not wotking stop for today    
-        // var  $todoCount = document.querySelector('todo-list');
-        // function todocount($todoCount){
-        //     if (item.done === item.done) 
-        //         return $todoCount;
-            
-        // }
-        // function myFunction(){
-        //     document.getElementsByClassName('todo-count').footer =$todoCount.filter(todocount);
-        // }
-        
-
+     
  // Toggle button
         const $toggle = document.createElement("input");
         $toggle.className = "toggle";
@@ -51,22 +40,31 @@ function update(){
     const $button = document.createElement('button');
     $button.className =" destroy";
     $li.appendChild($button);
+    // $button.addEventListener("remove", onDeleteItem.bind(null, item.id));
+    //     //$li.appendChild($toggle);
 
-    ///to be done for the filter part
+
+    ///Step 2 of the homwwork: filter
+    // going to show the number of item done or not.
 
     const $notDoneTodo = TODOS.filter(item => !item.done).length;
-    // Output on singular || prular !done TODOS 
     const $todoCount = document.querySelector('.todo-count');
     if ($notDoneTodo === 1) {
         $todoCount.innerHTML = $notDoneTodo + ' item left';
-    } else if ($notDoneTodo === 0 || $notDoneTodo > 1) {
+    } else 
+        {
+    
         $todoCount.innerHTML = $notDoneTodo + ' items left';
     }
 }
 
-
-    
+/// Step 3: Todo app: Deleting items: but still not working correctly?
+    if (TODOS.length === 0){
+        document.querySelector(".main").style.display = "none";    
+    }
+    else {
     document.querySelector(".main").style.display = "block";
+}
 }
 
 
