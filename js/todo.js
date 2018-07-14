@@ -40,8 +40,8 @@ function update(){
     const $button = document.createElement('button');
     $button.className =" destroy";
     $li.appendChild($button);
-    // $button.addEventListener("remove", onDeleteItem.bind(null, item.id));
-    //     //$li.appendChild($toggle);
+    //$button.addEventListener("remove", onDeleteItem.bind(null, item.id));
+    //$li.appendChild($toggle);
 
 
     ///Step 2 of the homwwork: filter
