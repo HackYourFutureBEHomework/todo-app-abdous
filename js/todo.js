@@ -40,7 +40,7 @@ function update(){
     const $button = document.createElement('button');
     $button.className =" destroy";
     $li.appendChild($button);
-    //$button.addEventListener("remove", onDeleteItem.bind(null, item.id));
+    $button.addEventListener("click", onDeleteItem.bind(null, item.id));
     //$li.appendChild($toggle);
 
 
@@ -76,7 +76,10 @@ function update(){
     update();
    
 }
-
+function onDeleteItem(id){
+    TODOS = TODOS.filter(item=> !item.done);
+    update();
+}
 
 
 function onNewTodo(e){
